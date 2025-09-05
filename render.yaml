@@ -2,9 +2,8 @@ services:
   - type: web
     name: profile-scraper-backend
     env: python
-    rootDir: profile-scrape-main
-    buildCommand: pip install -r requirements.txt
-    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    buildCommand: pip install -r profile-scrape-main/requirements.txt
+    startCommand: bash -lc "cd profile-scrape-main && uvicorn main:app --host 0.0.0.0 --port $PORT"
     envVars:
       - key: GEMINI_API_KEY
         fromSecret: GEMINI_API_KEY
