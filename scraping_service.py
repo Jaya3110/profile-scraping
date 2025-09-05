@@ -673,3 +673,11 @@ class ProfileScrapingService:
             "total_cached_profiles": sum(len(entry.profiles) for entry in self.cache.values()),
             "cache_size_mb": sum(len(str(entry)) for entry in self.cache.values()) / (1024 * 1024),
         }
+
+def is_render_environment():
+    return os.getenv("RENDER") == "true"
+
+# In scrape_profiles method:
+if 'freshworks.com/company/leadership' in url_str and not is_render_environment():
+    # Use Selenium only if not on Render
+    selenium_profiles = await self.scrape_with_selenium(url_str)
