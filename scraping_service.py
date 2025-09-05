@@ -9,7 +9,6 @@ from typing import List, Optional
 import uvicorn
 
 from models import Profile, ScrapingRequest, ScrapingResponse, ScrapingMetadata
-from scraping_service import ProfileScrapingService
 from rate_limiter import RateLimiter
 
 # Load environment variables
