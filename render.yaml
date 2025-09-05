@@ -3,9 +3,7 @@ services:
     name: profile-scraper-backend
     env: python
     rootDir: profile-scrape-main
-    buildCommand: |
-      apt-get update && apt-get install -y libxml2-dev libxslt-dev python3-dev gcc
-      pip install -r requirements.txt
+    buildCommand: pip install -r requirements.txt
     startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
     envVars:
       - key: GEMINI_API_KEY
@@ -14,3 +12,4 @@ services:
         value: 10000
     autoDeploy: true
     plan: free
+
