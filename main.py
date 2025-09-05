@@ -141,7 +141,10 @@ async def get_cached_profiles():
         "count": len(profiles)
     }
 if __name__ == "__main__":
-    import uvicorn
-        port = int(os.getenv("PORT", 8000))
-        uvicorn.run(app, host="0.0.0.0", port=port)
-
+    port = int(os.getenv("PORT", 8000))
+    uvicorn.run(
+        "main:app",
+        host="0.0.0.0",
+        port=port,
+        reload=False  # Set to False for production
+    )
